@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import './index.css';
+
 class Result extends Component {
   constructor(props) {
     super(props);
@@ -7,8 +9,12 @@ class Result extends Component {
   }
 
   render() {
+    const { restaurant } = this.props;
+
     return (
-      <div className="Result"></div>
+      <section className="Result">
+        <h2 className="Result__heading">{restaurant.name}</h2>
+      </section>
     );
   }
 }

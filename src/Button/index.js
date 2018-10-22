@@ -1,22 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './index.css';
 
-class Button extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  render() {
-    return (
-      <button
+const Button = (props) => {
+  return (
+    <button
         className="Button"
-        onClick={this.props.clicked}
+        onClick={props.clicked}
       >
-        {this.props.buttonText}
-      </button>
-    );
-  }
-}
+      {props.buttonText}
+    </button>
+  )
+};
 
 export default Button;

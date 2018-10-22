@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 
 import './App.css';
 
-import Button from './Button';
-import Result from './Result';
+import InputContainer from './containers/Input';
+import ResultContainer from './containers/Result';
 
 /* global google */
 
@@ -14,6 +14,10 @@ class App extends Component {
     this.state = {
       restaurants: [],
       selectedRestaurant: {},
+      location: {
+        lat: 42.336878,
+        lng: -83.051692,
+      },
     };
   }
 
@@ -23,21 +27,20 @@ class App extends Component {
   }
 
   initMap = () => {
-    const detroit = {lat: 42.336878, lng: -83.051692};
     const map = new google.maps.Map(ReactDOM.findDOMNode(this.refs.map), {
-      center: detroit,
+      center: this.state.location,
       zoom: 15,
     });
 
     const service = new google.maps.places.PlacesService(map);
     service.nearbySearch({
-      location: detroit,
+      location: this.state.location,
       radius: 805,
       type: ['restaurant'],
     }, this.updateRestaurants);
   }
 
-  loadJS(source) {
+  loadJS = (source) => {
     const ref = window.document.getElementsByTagName('script')[0];
     const script = window.document.createElement('script');
     script.src = source;
@@ -51,6 +54,15 @@ class App extends Component {
     });
   }
 
+  updateLocation = (data) => {
+    this.setState({
+      location: {
+        lat: data.lat,
+        lng: data.lng,
+      },
+    });
+  }
+
   updateRestaurants = (data) => {
     this.setState({
       restaurants: data,
@@ -59,13 +71,16 @@ class App extends Component {
   }
 
   render() {
+    const { selectedRestaurant } = this.state;
+
     return (
       <div className="App">
-        <Result
-          restaurant={this.state.selectedRestaurant}
+        <h1>Where should I eat?</h1>
+        <InputContainer
+          clicked={this.updateLocation}
         />
-        <Button
-          buttonText="New Restaurant"
+        <ResultContainer
+          restaurant={selectedRestaurant}
           clicked={this.returnNewRestaurant}
         />
         <div ref="map" style={{height: 0, width: 0}}></div>

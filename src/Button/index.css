@@ -5,7 +5,6 @@
   padding: 20px;
   color: white;
   font-size: 16px;
-  font-family: Verdana, sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: 0.3s;
@@ -13,4 +12,8 @@
 
 .Button:hover {
   background: #94beaf;
+}
+
+.Button--right {
+  align-self: flex-end;
 }

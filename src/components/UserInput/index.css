@@ -1,31 +1,31 @@
 .Input__wrapper {
-  width: 410px;
-  margin: 0 auto 15px;
-  border-radius: 3px;
   border: 1px solid #4c5b5c;
+  border-radius: 3px;
+  margin: 0 auto 15px;
   position: relative;
+  width: 410px;
 }
 
 .Input {
-  display: block;
-  padding: 20px 10px 10px;
-  height: 100%;
-  width: 100%;
-  font-size: 16px;
   border: none;
   border-radius: 4px;
   color: #4c5b5c;
+  display: block;
+  font-size: 16px;
+  height: 100%;
+  padding: 20px 10px 10px;
+  width: 100%;
 }
 
 .Input__label {
   display: block;
-  font-size: 11px;
-  position: absolute;
-  top: 5px;
-  left: 10px;
-  pointer-events: none;
   color: #4c5b5c;
   filter: brightness(0.5);
+  font-size: 11px;
+  left: 10px;
+  pointer-events: none;
+  position: absolute;
+  top: 5px;
 }
 
 .Input--select {
@@ -33,14 +33,15 @@
 }
 
 .Input__wrapper--select:after {
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #4c5b4c;
   content: '';
+  height: 0;
+  pointer-events: none;
   position: absolute;
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
   width: 0;
-  height: 0;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-top: 7px solid #4c5b4c;
 }

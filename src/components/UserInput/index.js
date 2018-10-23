@@ -1,16 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './index.css';
 
-const UserInput = (props) => {
+const UserInput = ({
+  location = '28 W Adams Ave, Detroit, MI 48226',
+  radius = '805',
+  updateLocation,
+  updateRadius,
+}) => {
   return (
     <section className="UserInput">
       <div className="Input__wrapper">
         <label className="Input__label">Starting address</label>
         <input
           className="Input"
-          defaultValue={props.location}
-          onChange={props.updateLocation}
+          defaultValue={location}
+          onChange={updateLocation}
           type="text"
         />
       </div>
@@ -18,10 +24,11 @@ const UserInput = (props) => {
         <label className="Input__label">How far are you willing to walk?</label>
         <select
           className="Input Input--select"
-          defaultValue={props.radius}
-          onChange={props.updateRadius}
+          defaultValue={radius}
+          onChange={updateRadius}
           type="tel"
         >
+          {/* These values are the converted to meters */}
           <option value="403">1/4 mile</option>
           <option value="805">1/2 mile</option>
           <option value="1609">1 mile</option>
@@ -32,5 +39,12 @@ const UserInput = (props) => {
     </section>
   )
 };
+
+UserInput.propTypes = {
+  location: PropTypes.string,
+  radius: PropTypes.string,
+  updateLocation: PropTypes.func.isRequired,
+  updateRadius: PropTypes.func.isRequired,
+}
 
 export default UserInput;

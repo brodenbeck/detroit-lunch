@@ -9,17 +9,14 @@ import ResultContainer from './containers/Result';
 /* global google */
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      restaurants: [],
-      selectedRestaurant: {},
-      location: {
-        lat: 42.336878,
-        lng: -83.051692,
-      },
-    };
-  }
+  state = {
+    restaurants: [],
+    selectedRestaurant: {},
+    location: {
+      lat: 42.336878,
+      lng: -83.051692,
+    },
+  };
 
   componentDidMount = () => {
     window.initMap = this.initMap;
@@ -49,9 +46,9 @@ class App extends Component {
   }
 
   returnNewRestaurant = () => {
-    this.setState({
-      selectedRestaurant: this.state.restaurants[Math.floor(Math.random() * this.state.restaurants.length)],
-    });
+    this.setState((prevState) => ({
+      selectedRestaurant: prevState.restaurants[Math.floor(Math.random() * prevState.restaurants.length)],
+    }));
   }
 
   updateLocation = (data) => {

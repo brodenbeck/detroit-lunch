@@ -1,16 +1,16 @@
 .App {
+  align-items: center;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 100vh;
   margin: 0 auto;
   padding: 20px;
-  height: 100vh;
   width: 450px;
 }
 
 * {
   box-sizing: border-box;
-  font-family: Verdana, sans-serif;
   color: #4c5b5c;
+  font-family: Verdana, sans-serif;
 }

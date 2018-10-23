@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import Button from '../Button';
-import UserInput from '../UserInput';
+import Button from '../components/Button';
+import UserInput from '../components/UserInput';
 
 class InputContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      radius: '803',
-      location: {
-        lat: '',
-        lng: '',
-      },
-    };
-  }
+  state = {
+    radius: '803',
+    location: '28 W. Adams Ave. Detroit, MI 48226',
+    locationCoordinates: {
+      lat: '',
+      lng: '',
+    },
+  };
 
   handleLocationUpdate = (event) => {
     // const userInputLocation = event.target.value;
     // translate userInputLocation to lat/long
     this.setState({
-      location: {
+      locationCoordinates: {
         lat: '', // latitude
         lng: '', // longitude
       },
@@ -33,13 +32,16 @@ class InputContainer extends Component {
   }
 
   render() {
-    const { clicked } = this.props.clicked;
+    const { clicked } = this.props;
+    const { location, radius } = this.state;
 
     return (
       <section className="InputContainer">
         <UserInput
+          location={location}
+          radius={radius}
           updateLocation={this.handleLocationUpdate}
-          updateRadius={this.updateRadius}
+          updateRadius={this.handleRadiusUpdate}
         />
         <Button
           buttonText="Feed me"
@@ -50,5 +52,8 @@ class InputContainer extends Component {
   }
 }
 
+InputContainer.propTypes = {
+  clicked: PropTypes.func.isRequired,
+};
 
 export default InputContainer;

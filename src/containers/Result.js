@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import Button from '../Button';
-import Result from '../Result';
+import Button from '../components/Button';
+import Result from '../components/Result';
 
-class ReactContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
+class ResultContainer extends Component {
   render() {
     const { restaurant, clicked } = this.props;
 
@@ -26,5 +22,11 @@ class ReactContainer extends Component {
   }
 }
 
+ResultContainer.propTypes = {
+  clicked: PropTypes.func.isRequired,
+  restaurant: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }),
+};
 
-export default ReactContainer;
+export default ResultContainer;
